@@ -18,17 +18,9 @@ class Matrix(object):
         2 | 6  6  7
     """
     def __init__(self, matrix):
-        self._rows = []
-        for row in matrix.splitlines():
-            self._rows.append([int(x) for x in row.split()])
+        _rows = matrix.splitlines()
+        self.rows = [[int(column) for column in row.split()] for row in _rows]
 
-    @property
-    def rows(self):
-        """ Return the rows of the matrix."""
-        return self._rows
-
-    @property
-    def columns(self):
-        """ Return the list of columns of the matrix."""
-        return [list(x) for x in zip(*self._rows)]
+        _columns = zip(*self.rows)
+        self.columns = [list(column) for column in _columns]
 
