@@ -13,13 +13,6 @@ class DNA(object):
         T -> A
         A -> U
     """
-    DNA_TO_RNA = {
-        'G': 'C',
-        'C': 'G',
-        'T': 'A',
-        'A': 'U'
-    }
-
     def __init__(self, sequence):
         self.sequence = sequence
 
@@ -27,9 +20,6 @@ class DNA(object):
         """
         Convert this strand of DNA into RNA
         """
-        rna = []
-        for n in self.sequence:
-            rna.append(self.DNA_TO_RNA.get(n, ' '))
-        
-        return ''.join(rna)
+        DNA_TO_RNA = dict(G='C', C='G', T='A', A='U')
+        return ''.join([DNA_TO_RNA.get(n, ' ') for n in self.sequence])
 
