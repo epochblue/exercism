@@ -1,0 +1,15 @@
+clojure
+coffeescript
+elixir
+go
+haskell
+javascript
+objective-c
+ocaml
+perl5
+ruby
+scala
+
+.DS_Store
+*.pyc
+*.pyo
