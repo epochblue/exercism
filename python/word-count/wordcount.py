@@ -1,18 +1,16 @@
 import re
 import string
+import collections
 
 class Phrase(object):
+    """
+    A program that given a phrase will count the occurrences of each word
+    in that phrase (excluding punctuation, and ignoring case).
+    """
     def __init__(self, phrase):
         punc = re.escape(string.punctuation)
-        self._words = re.sub('[{}]'.format(punc), '', phrase)
+        self._words = re.sub('[{}]'.format(punc), '', phrase).lower()
     
     def word_count(self):
-        counts = dict()
-        for word in [w.lower() for w in self._words.split()]:
-            if not counts.get(norm):
-                counts[norm] = 0
-
-            counts[norm] += 1
-
-        return counts
+        return collections.Counter(self._words.split())
 
