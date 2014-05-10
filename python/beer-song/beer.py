@@ -2,41 +2,31 @@ class Beer(object):
     """
     Sing the verses of '99 Bottles of Beer on the Wall'
     """
-    def verse(self, x):
+    def verse(self, current):
         """
-        Sing a specific verse of '99 Bottles of beer on the wall.
+        Sing a specific verse of '99 Bottles of Beer on the Wall'.
 
         :param x: The verse to sing
         """
-        bottles = range(0, 100)
+        templates = {
+            '_': '{0} bottles of beer on the wall, {0} bottles of beer.\n'
+                 'Take one down and pass it around, {1} bottles of beer on the wall.\n',
 
-        label = lambda x: 'No more' if x == 0 else str(x)
-        pluralize = lambda x: 'bottle' if x == 1 else 'bottles'
-        num_of_beers = lambda x: '{} of beer'.format(x)
-        on_the_wall = lambda x: '{} on the wall'.format(x)
+            '2': '{0} bottles of beer on the wall, {0} bottles of beer.\n'
+                 'Take one down and pass it around, {1} bottle of beer on the wall.\n',
 
-        curr = bottles[x] 
-        nxt = bottles[x-1]
-
-        num_labeled = '{} {}'.format(label(curr), pluralize(curr))
-        nxt_labeled = '{} {}'.format(label(nxt), pluralize(nxt))
-
-        if not curr:
-            next_action = 'Go to the store and buy some more'
-        else:
-            what = 'it' if curr == 1 else 'one'
-            next_action = 'Take {} down and pass it around'.format(what)
-
-        return "{}, {}.\n{}, {}.\n".format(
-            on_the_wall(num_of_beers(num_labeled)),
-            num_of_beers(num_labeled).lower(),
-            next_action,
-            on_the_wall(num_of_beers(nxt_labeled).lower())
-        )
-
+            '1': '{0} bottle of beer on the wall, {0} bottle of beer.\n'
+                 'Take it down and pass it around, no more bottles of beer on the wall.\n',
+            
+            '0': 'No more bottles of beer on the wall, no more bottles of beer.\n'
+                 'Go to the store and buy some more, 99 bottles of beer on the wall.\n'
+        }
+        next_ = 99 if current == 0 else current - 1
+        return templates['_' if current > 2 else str(current)].format(current, next_)
+        
     def sing(self, x, y=0):
         """
-        Sing the specified range of verses of '99 Bottles of Beer on the Wall.
+        Sing a range of verses of '99 Bottles of Beer on the Wall'.
 
         :param x: The verse to start with
         :param y: The verse to end with, defaults to the 0th verse
