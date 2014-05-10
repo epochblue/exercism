@@ -21,7 +21,7 @@ class Beer(object):
             '0': 'No more bottles of beer on the wall, no more bottles of beer.\n'
                  'Go to the store and buy some more, 99 bottles of beer on the wall.\n'
         }
-        next_ = 99 if current == 0 else current - 1
+        next_ = current - 1
         return templates['_' if current > 2 else str(current)].format(current, next_)
         
     def sing(self, x, y=0):
