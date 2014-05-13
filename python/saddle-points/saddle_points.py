@@ -11,7 +11,7 @@ def saddle_points(matrix):
 
     :param matrix: list of rows of a matrix
     """
-    if matrix and len(set(map(len, matrix))) != 1:
+    if not all([len(r) == len(matrix[0]) for r in matrix]):
         raise ValueError('irregular matrix')
 
     points = []
