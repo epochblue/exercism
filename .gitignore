@@ -1,15 +1,20 @@
 clojure
 coffeescript
+cpp
 csharp
 elixir
+erlang
+fsharp
 go
 haskell
 javascript
+lua
 objective-c
 ocaml
 perl5
 ruby
 scala
+swift
 
 .DS_Store
 *.pyc
