@@ -1,25 +1,25 @@
 import unittest
-import dna
+
+from dna import to_rna
 
 
 class DNATests(unittest.TestCase):
-    def test_transcribes_cytidine_unchanged(self):
-        self.assertEqual('C', dna.DNA('G').to_rna())
 
-    def test_transcribes_guanosine_unchanged(self):
-        self.assertEqual('G', dna.DNA('C').to_rna())
+    def test_transcribes_guanine_to_cytosine(self):
+        self.assertEqual('C', to_rna('G'))
 
-    def test_transcribes_adenosine_unchanged(self):
-        self.assertEqual('A', dna.DNA('T').to_rna())
+    def test_transcribes_cytosine_to_guanine(self):
+        self.assertEqual('G', to_rna('C'))
 
-    def test_transcribes_thymidine_to_uracil(self):
-        self.assertEqual('U', dna.DNA('A').to_rna())
+    def test_transcribes_thymine_to_adenine(self):
+        self.assertEqual('A', to_rna('T'))
+
+    def test_transcribes_adenine_to_uracil(self):
+        self.assertEqual('U', to_rna('A'))
 
     def test_transcribes_all_occurences(self):
-        self.assertEqual(
-            'UGCACCAGAAUU',
-            dna.DNA('ACGTGGTCTTAA').to_rna()
-        )
+        self.assertEqual('UGCACCAGAAUU', to_rna('ACGTGGTCTTAA'))
+
 
 if __name__ == '__main__':
     unittest.main()
