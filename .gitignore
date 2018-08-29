@@ -19,3 +19,8 @@ swift
 .DS_Store
 *.pyc
 *.pyo
+venv
+__pycache__
+.pytest_cache
+
+.solution.json
