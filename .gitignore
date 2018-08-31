@@ -17,6 +17,7 @@ scala
 swift
 
 .DS_Store
+.idea
 *.pyc
 *.pyo
 venv
